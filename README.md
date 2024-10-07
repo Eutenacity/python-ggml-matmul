@@ -10,8 +10,8 @@ ggml-matmul with pytorch
 
 # changes in ggml
 
-ggml-master\src\ggml-cuda.cu   line 2270-2275
-ggml-master\include\ggml-cuda.h line 45
+1. ggml-master\src\ggml-cuda.cu   line 2270-2275
+2. ggml-master\include\ggml-cuda.h line 45
 
 # to do
 supoort to pytorch cuda graph (I have no idea now)
