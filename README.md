@@ -5,8 +5,9 @@ ggml-matmul with pytorch
 
 1. copy your cuda path to setup.py line24
 2. install pytorch >= 2.1.2
-3. pip install .
-4. test.py is the example
+3. install ggml (cd ggml-master, mkdir build, cd build, cmake .., export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/cuda/lib64, cmake --build . --config Release -j 8)
+4. pip install .
+5. test.py is the example
 
 # changes in ggml
 
