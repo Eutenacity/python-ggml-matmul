@@ -45,23 +45,7 @@ class GGMLLinear(nn.Module):
             C = C.to(ori_type)
 
         return C
-gguf_path = "/share/models/llama-2-70b-q40-gguf-1"
-gguf_loader=GGUFLoader(gguf_path)
-# print(gguf_loader.tensor_info)
-str_name = "blk.0.attn_output.weight"
-print(gguf_loader.tensor_info[str_name])
-tensor = gguf_loader.get_mmap_tensor(str_name)
-b = torch.tensor(tensor,dtype= torch.uint8)
-tensor_fp32_b = gguf_loader.load_gguf_tensor(str_name).to(torch.float)
-n,k,m=1,8192,8192
-a = torch.randn(n,k,dtype=torch.float32)
 
-a_type,b_type = 0,2
-
-# ggml_mm.init(m,k,n,b_type,a_type)
-# out0 = ggml_mm.matmul(b.cuda(),a.cuda(),n,m,b_type,a_type)
-# print(out0)
-linear = GGMLLinear(k,m,b.cuda(),b_type)
 
 
 a1 = torch.randn(1,4096,dtype=torch.float)
@@ -81,23 +65,6 @@ b_type = gguf_loader.tensor_info[str_name]['ggml_type']
 # print(ggml_mm.matmul(b1.cuda(),a1.cuda(),n,m,8,1,1))
 linear1 = GGMLLinear(4096,14336,b1.cuda(),b_type)
 
-ref = F.linear(a.float(),tensor_fp32_b)
-print(ref)
-a_cuda = a.cuda()
-print(a_cuda.data_ptr())
-out = linear(a_cuda)
-print(out)
-print((ref-out.cpu()).abs().max())
-# g = torch.cuda.CUDAGraph()
-# out = linear(a_cuda)
-# with torch.cuda.graph(g):
-#     out = linear(a_cuda)
-
-# g.replay()
-# print(out)
-# a_cuda.fill_(0)
-# g.replay()
-# print(out)
 
 tensor_fp32 = tensor_fp32[:,:2048]
 a1_half = torch.randn(20,2048,dtype=torch.float).cuda()
