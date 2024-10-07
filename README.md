@@ -8,6 +8,8 @@ ggml-matmul with pytorch
 3. install ggml (cd ggml-master, mkdir build, cd build, cmake .., export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/cuda/lib64, cmake --build . --config Release -j 8)
 4. pip install .
 5. test.py is the example
+6. my_gguf.py is copied from https://github.com/kvcache-ai/ktransformers/blob/main/ktransformers/util/custom_gguf.py
+7. gguf file is downloaded from https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-GGUF
 
 # changes in ggml
 
