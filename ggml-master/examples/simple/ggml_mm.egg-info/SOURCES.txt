@@ -1,0 +1,8 @@
+README.md
+ggml_mm.cpp
+setup.py
+simple-backend.cpp
+ggml_mm.egg-info/PKG-INFO
+ggml_mm.egg-info/SOURCES.txt
+ggml_mm.egg-info/dependency_links.txt
+ggml_mm.egg-info/top_level.txt
